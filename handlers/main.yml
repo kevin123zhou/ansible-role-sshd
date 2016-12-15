@@ -5,4 +5,4 @@
   shell: iptables-save > {{ sshd_iptables_data }}
 
 - name: restart sshd
-  service: "name={{ sshd_service_name }} state=restarted"
+  service: name={{ "sshd_service_name_ubuntu" if ansible_distribution == "Ubuntu" else "sshd_service_name" }} state=restarted
